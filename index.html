@@ -3,12 +3,27 @@
 		<title>Test</title>
 		<script src="https://raw.githubusercontent.com/explosion/displacy-ent/master/assets/js/displacy-ent.js"></script>
 		<script>
-			function HelloWorld(){alert("Hello world");}
+			function HelloWorld(){
+				var xhr = new XMLHttpRequest();
+				var url = "url?data=";
+				xhr.open("POST", url, true);
+				xhr.setRequestHeader("Content-type", "application/json");
+				xhr.onreadystatechange = function () {
+					var json = JSON.parse(xhr.responseText);
+					console.log(json);
+				};
+				xhr.send();
+			}
+			function HelloWorld2(){
+				var element = document.getElementById('txt').textContent;
+				alert(element);
+			}
 		</script>
 	<head>
 	<body>
 		Hello World
 		<input type="button" onClick="HelloWorld()">
+		<input id="txt" type="text" onClick="HelloWorld()">
 	<body>
 </html>
 
